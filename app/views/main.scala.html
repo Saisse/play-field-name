@@ -1,0 +1,21 @@
+@(form: Form[_])(implicit request: Request[_], messages: Messages)
+
+@buildFieldName(error: FormError) = @{
+ FormError(error.key, error.message, Messages(error.key) +: error.args)
+}
+
+<html>
+ <body>
+  @helper.form(action = helper.CSRF(controllers.routes.MainController.post)) {
+   @Messages("testField"): <input name="testField" />
+   @if(form.errors.nonEmpty) {
+    <ul>
+     @for(e <- form.errors) {
+      <li>@buildFieldName(e).format</li>
+     }
+    </ul>
+   }
+   <input type="submit" />
+  }
+ </body>
+</html>

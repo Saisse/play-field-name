@@ -1,0 +1,8 @@
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%logger{15} - %message%n%xException{10}</pattern>
+    </encoder>
+  </appender>
+  <logger name="play" level="INFO" />
+</configuration>
